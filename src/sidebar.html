@@ -1,0 +1,72 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <style>
+    body {
+      padding: 0;
+      margin: 5px;
+    }
+
+    h1 {
+      font-size: 20px;
+    }
+
+    h2 {
+      font-size: 16px;
+    }
+
+    label > * {
+      display: block;
+    }
+
+    input {
+      width: 100%;
+    }
+
+    .error {
+      display: none;
+      color: red;
+    }
+
+    button {
+      margin: 10px 0;
+    }
+
+    table > button {
+      margin: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <section>
+    <h1>Clip</h1>
+    <form>
+      <label for="content-id">Element ID:
+        <input id="content-id"></input>
+      </label>
+      <button id="clip">Clip</button>
+    </form>
+    <div id="clip-error" class="error"> </div>
+  </section>
+  <section>
+    <h1>eBook</h1>
+    <label for="title">Title:
+      <input id="title" value="Clippings"></input>
+    </label>
+    <h2>Chapters</h3>
+    <table id="chapters">
+      <tbody></tbody>
+    </table>
+
+    <form>
+      <button id="save">Save eBook</button>
+      <div id="save-error" class="error"> </div>
+    </form>
+  </section>
+  <script src="lib/jszip.js"></script>
+  <script src="sidebar.js"></script>
+</body>
+</html>

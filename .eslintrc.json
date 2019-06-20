@@ -1,0 +1,43 @@
+{
+    "env": {
+        "browser": true,
+        "es6": true,
+        "webextensions": true
+    },
+    "parserOptions": {
+      "ecmaVersion": 8
+    },
+    "plugins": [
+      "unicorn"
+    ],
+    "extends": "eslint:recommended",
+    "rules": {
+        "camelcase": "error",
+        "indent": [
+            "error",
+            2
+        ],
+        "linebreak-style": [
+            "error",
+            "unix"
+        ],
+        "no-inner-declarations": "off",
+        "no-template-curly-in-string": "error",
+        "no-var": "error",
+        "object-shorthand": "error",
+        "prefer-const": "error",
+        "prefer-destructuring": "error",
+        "prefer-rest-params": "error",
+        "prefer-spread": "error",
+        "unicorn/prefer-text-content": "error",
+        "quotes": [
+            "error",
+            "double"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ],
+        "strict": ["error", "global"]
+    }
+}
