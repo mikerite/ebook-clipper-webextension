@@ -12,16 +12,16 @@ if (window.CONTENT_SCRIPT_LOADED === undefined) {
     }
 
     const { title } = document;
-    const images = new Map(imageUrls.map(x => [x, null]));
+    const images = new Map(imageUrls.map((x) => [x, null]));
     const content = await extractNode(contentElement, images);
     browser.runtime.sendMessage({
       chapter: { title, src: document.URL, content },
-      images
+      images,
     });
   }
 
   function getImgBlob(node) {
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       const canvas = document.createElement("canvas");
       canvas.width = node.naturalWidth;
       canvas.height = node.naturalHeight;

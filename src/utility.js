@@ -70,6 +70,6 @@ if (window.TAG_WHITELIST === undefined) {
     "VAR",
     "WBR",
     "TIME",
-    "UL"
+    "UL",
   ];
 }

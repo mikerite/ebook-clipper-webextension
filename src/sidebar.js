@@ -3,7 +3,7 @@
 "use strict";
 const ebook = {
   chapters: [],
-  images: new Map()
+  images: new Map(),
 };
 
 const chapterTabIds = new Set();
@@ -17,7 +17,7 @@ async function clip() {
 
   const queryResult = await browser.tabs.query({
     active: true,
-    currentWindow: true
+    currentWindow: true,
   });
   const [activeTab] = queryResult;
 
@@ -37,12 +37,12 @@ async function clip() {
   }
 
   await browser.tabs.executeScript(activeTab.id, {
-    file: "/clip.js"
+    file: "/clip.js",
   });
 
   browser.tabs.sendMessage(activeTab.id, {
     elementId,
-    imageUrls: [...ebook.images.keys()]
+    imageUrls: [...ebook.images.keys()],
   });
 }
 
@@ -65,7 +65,7 @@ async function handleMessage({ chapter, images, error }) {
   const anchor = document.createElement("a");
   anchor.textContent = chapter.title;
   anchor.href = "#";
-  anchor.addEventListener("click", event => {
+  anchor.addEventListener("click", (event) => {
     event.preventDefault();
     showChapterTab(chapter);
   });
@@ -75,7 +75,7 @@ async function handleMessage({ chapter, images, error }) {
 
   const deleteButton = document.createElement("button");
   deleteButton.textContent = "Delete";
-  deleteButton.addEventListener("click", event => {
+  deleteButton.addEventListener("click", (event) => {
     event.preventDefault();
     chapterTable.deleteRow(row.rowIndex);
 
@@ -160,7 +160,7 @@ async function buildChapter(chapter, fileNameMap) {
 
   const serializer = new XMLSerializer();
   return new Blob([serializer.serializeToString(chapterDoc)], {
-    type: "text/xml"
+    type: "text/xml",
   });
 }
 
@@ -174,7 +174,7 @@ function getUUID() {
 
   function toHex(bytes) {
     return Array.from(bytes)
-      .map(b => b.toString(16).padStart(2, "0"))
+      .map((b) => b.toString(16).padStart(2, "0"))
       .join("");
   }
 
@@ -331,13 +331,13 @@ async function handleSaveClick() {
 
   const blob = await zip.generateAsync({
     type: "blob",
-    mimeType: "application/epub+zip"
+    mimeType: "application/epub+zip",
   });
   const url = URL.createObjectURL(blob);
   await browser.downloads.download({
     url,
     filename: "clippings.epub",
-    saveAs: true
+    saveAs: true,
   });
   URL.revokeObjectURL(blob);
 }
@@ -352,7 +352,7 @@ async function showChapterTab(chapter) {
   await browser.tabs.sendMessage(tab.id, {
     title: `eBook Clipper: ${chapterNumber}. ${chapter.title}`,
     content: chapter.content,
-    images: ebook.images
+    images: ebook.images,
   });
 }
 
